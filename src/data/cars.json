@@ -1,0 +1,58 @@
+{
+  "cars": [
+    {
+      "brand": "Audi",
+      "models": [
+        "A3",
+        "A4",
+        "A5",
+        "A6"
+      ]
+    },
+    {
+      "brand": "BMW",
+      "models": [
+        "X1",
+        "X3",
+        "X5",
+        "X6"
+      ]
+    },
+    {
+      "brand": "Ford",
+      "models": [
+        "Edge",
+        "Escape",
+        "Escort",
+        "Excursion"
+      ]
+    },
+    {
+      "brand": "Mazda",
+      "models": [
+        "CX-5",
+        "CX-7",
+        "CX-9",
+        "GLC"
+      ]
+    }
+  ],
+  "transmission": [
+    "Automatic Transmission",
+    "Automated Manual Transmission",
+    "Continuously Variable Transmission",
+    "Manual Transmission"
+  ],
+  "fuel": [
+    "Gasoline",
+    "Diesel",
+    "Natural gas",
+    "Electric"
+  ]
+}
+
+
+
+
+
+
