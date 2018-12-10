@@ -1,0 +1,65 @@
+@import "../common/mixins";
+@import "../common/theme";
+@import "../common/breakpoints";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font: normal 500 15px/1.2 sans-serif;
+  background-color: lighten($color-primary, 55%);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+
+  &-track {
+    background-color: lighten($color-primary, 40%);
+  }
+
+  &-thumb {
+    background: $color-primary;
+    border-radius: 3px;
+
+    &:hover {
+      background: $color-success;
+    }
+  }
+
+
+
+}
+
+.grid {
+  min-height: 100%;
+}
+
+.sidebar {
+  padding: 10px;
+
+  @media (min-width: $tablet) {
+    padding: 0;
+    width: 240px;
+    position: fixed;
+    left: 10px;
+    top: 20px;
+    bottom: 20px;
+    overflow-y: auto;
+  }
+}
+
+.main {
+  padding: 10px;
+
+  @media (min-width: $mobile-l) {
+    padding-top: 20px;
+  }
+
+  @media (min-width: $tablet) {
+    padding-left: 270px;
+    padding-right: 16px;
+  }
+}
