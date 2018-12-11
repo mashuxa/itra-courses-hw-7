@@ -28,9 +28,6 @@ body {
       background: $color-success;
     }
   }
-
-
-
 }
 
 .grid {
@@ -52,14 +49,21 @@ body {
 }
 
 .main {
-  padding: 10px;
+  padding: 5px;
 
-  @media (min-width: $mobile-l) {
-    padding-top: 20px;
-  }
+  &__item {
+    @include box-shadow();
 
-  @media (min-width: $tablet) {
-    padding-left: 270px;
-    padding-right: 16px;
+    color: $color-dark;
+    background-color: $color-light;
+    transition-duration: 0.3s;
+    user-select: none;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    position: relative;
   }
 }
