@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 
 class MenuItem extends Component {
   render() {
+    console.log(this.props);
+    const itemClassList = this.props.isActive ? 'main__item main__item--active' : 'main__item';
     return (
-      <div className="main__item">{this.props.text}</div>
+      <div onClick={this.props.onClickItem} className={itemClassList}>{this.props.text}</div>
     );
   }
 }

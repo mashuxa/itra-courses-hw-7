@@ -65,5 +65,9 @@ body {
     margin: 5px;
     text-align: center;
     position: relative;
+
+    &--active {
+      background-color: #038387;
+    }
   }
 }

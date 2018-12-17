@@ -14,6 +14,8 @@
     color: $color-dark;
     background-color: $color-light;
     transition-duration: 0.3s;
+    visibility: hidden;
+    opacity: 0;
     user-select: none;
     font-size: 16px;
     line-height: 20px;
@@ -28,9 +30,9 @@
       box-shadow: none;
     }
 
-    &--hidden {
-      visibility: hidden;
-      opacity: 0;
+    &--visible {
+      visibility: visible;
+      opacity: 1;
     }
 
     &--prev {
