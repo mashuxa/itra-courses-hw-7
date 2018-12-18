@@ -1,7 +1,7 @@
 @import "../common/theme";
 @import "../common/mixins";
 
-.menu {
+.btns-menu {
   @include flex-block($justifyContent: space-between);
 
   padding: 0;
