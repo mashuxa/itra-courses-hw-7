@@ -11,23 +11,24 @@
   &__btn {
     @include box-shadow();
 
-    color: $color-dark;
-    background-color: $color-light;
     transition-duration: 0.3s;
     visibility: hidden;
     opacity: 0;
     user-select: none;
     font-size: 16px;
     line-height: 20px;
-    cursor: pointer;
     padding: 10px;
     text-align: center;
     position: relative;
+    cursor: auto;
+    box-shadow: none;
+    color: $color-dark;
+    background-color: $color-light;
+    filter: brightness(0.5);
 
-    &--disabled {
-      cursor: auto;
-      background-color: $color-dark;
-      box-shadow: none;
+    &--enabled {
+      cursor: pointer;
+      filter: brightness(1);
     }
 
     &--visible {

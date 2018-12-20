@@ -6,65 +6,91 @@ import './style.scss';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      brand: null,
-      model: null,
-      transmission: null,
-      fuel: null,
-    };
-  }
-
-
-  onClickItem(step) {
-
-    this.onClickNextBtn.bind("1", "2");
-    //   // this.type = type;
-    //   // this.value = value;
-  }
-
-  onClickNextBtn(x, y) {
-    console.log('Sgh;ghg');
-  }
-
-  //   if (this.type && this.value) {
-  //     this.setState({
-  //       [this.type]: this.value
-  //     });
-  //   }
-  // }
-
-  // onClickPrevBtn() {
-  //   this.setState({
-  //     [this.type]: null
-  //   });
-  //
-  // }
-
-  getCurrentItems() {
-    for (let currentValue in this.state) {
-      if (this.state[currentValue] === null) {
-        return carsData[currentValue].map((el, index) => {
-          return <MenuItem key={index} text={el} onClickItem={this.onClickItem.bind(this, el, index)}/>;
-        });
-      } else {
-        console.log(this.state);
-      }
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentStep: null,
+            currentValue: null,
+        };
+        this.currentValues = {
+            brand: null,
+            model: null,
+            transmission: null,
+            fuel: null,
+        };
+        this.onClickNextBtn = this.onClickNextBtn.bind(this);
+        this.onClickPrevBtn = this.onClickPrevBtn.bind(this);
     }
-  }
 
-  render() {
-    return (
-      <React.Fragment>
-        <BtnsMenu isActivePrevBtn={this.state.brand !== null} isActiveNextBtn={this.state.fuel === null}
-                  onClickNextBtn={this.onClickNextBtn}/>
-        <main className='main'>
-          {this.getCurrentItems()}
-        </main>
-      </React.Fragment>
-    );
-  }
+    onClickItem(currentStep, currentValue) {
+        this.setState({
+            currentStep: currentStep,
+            currentValue: currentValue,
+        });
+    }
+
+    onClickNextBtn() {
+        if (this.state.currentStep !== null && this.state.currentValue !== null) {
+            this.currentValues[this.state.currentStep] = this.state.currentValue;
+            this.setState({
+                currentStep: null,
+                currentValue: null,
+            });
+        }
+    }
+
+    onClickPrevBtn() {
+        let prevStep;
+        for (let step in this.currentValues) {
+            if (this.currentValues[step] !== null) {
+                prevStep = step;
+            }
+        }
+        this.currentValues[prevStep] = null;
+        this.setState({
+            currentStep: null,
+            currentValue: null,
+        });
+    }
+
+    getCurrentItems() {
+        for (let currentStep in this.currentValues) {
+            if (this.currentValues[currentStep] === null) {
+                if (currentStep === 'model') {
+                    return carsData[this.currentValues.brand].map((value, index) => {
+                        return <MenuItem key={index} text={value}
+                                         onClickItem={this.onClickItem.bind(this, currentStep, value)}
+                                         isActive={this.state.currentValue === value}/>;
+                    });
+                } else {
+                    return carsData[currentStep].map((value, index) => {
+                        return <MenuItem key={index} text={value}
+                                         onClickItem={this.onClickItem.bind(this, currentStep, value)}
+                                         isActive={this.state.currentValue === value}/>;
+                    });
+                }
+            }
+        }
+
+        return Object.values(this.currentValues).map((value, index) => {
+            return <MenuItem key={index} text={value}/>;
+        });
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <BtnsMenu isActivePrevBtn={this.currentValues.brand !== null}
+                          isActiveNextBtn={this.currentValues.fuel === null}
+                          isEnableNextBtn={this.state.currentValue !== null}
+                          onClickNextBtn={this.onClickNextBtn}
+                          onClickPrevBtn={this.onClickPrevBtn}/>
+                <main className="main">
+                    {this.getCurrentItems()}
+                </main>
+            </React.Fragment>
+        );
+    }
 }
 
 export default App;
